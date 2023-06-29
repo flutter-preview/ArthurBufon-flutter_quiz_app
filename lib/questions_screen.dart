@@ -15,7 +15,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(context) {
     final currentQuestion = questions[0];
-    
+
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -26,22 +26,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             style: const TextStyle(color: Colors.white),
           ),
           const SizedBox(height: 30),
-          AnswerButton(
-            onTap: () {},
-            answerText: currentQuestion.answers[0],
-          ),
-          AnswerButton(
-            onTap: () {},
-            answerText: currentQuestion.answers[1],
-          ),
-          AnswerButton(
-            onTap: () {},
-            answerText: currentQuestion.answers[2],
-          ),
-          AnswerButton(
-            onTap: () {},
-            answerText: currentQuestion.answers[3],
-          ),
+          ...currentQuestion.answers.map((answer){
+            return AnswerButton(answerText: answer, onTap: () {});
+          }),
         ],
       ),
     );
